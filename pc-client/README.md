@@ -1,26 +1,26 @@
 # pc-client
 
-## 安装项目依赖
+## Install project dependencies(安装项目依赖)
 ```
 npm install
 ```
 
-### 编译并启动开发者服务器
+### Compile and start the developer server(编译并启动开发者服务器)
 ```
 npm run serve
 ```
 
-### 生产模式编译构建
+### Production mode builds(生产模式编译构建)
 ```
 npm run build
 ```
 
-### electron开发者模式启动
+### start electron with developer model(开发者模式启动) 
 ```
 npm run electron
 ```
 
-### electron构建打包
+### build and package with electron(electron构建打包)
 ```
 npm run package
 ```
