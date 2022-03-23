@@ -24,6 +24,3 @@ npm run electron
 ```
 npm run package
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
