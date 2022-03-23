@@ -1,0 +1,94 @@
+.likes{
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 100px;
+    h1{
+        color: white;
+        margin-top: -94px;
+        padding-left: 20px;
+    }
+    .controls{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 10px 0 10px 20px;
+    }
+    .music_table{
+        width: 97%;
+        height: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding-top: 50px;
+        .thead{
+            height: 50px;
+            color: lightgray;
+            display: flex;
+            margin-top: -50px;
+            .th{
+                flex: 1;
+                display: flex;
+                align-items: center;
+                padding: 10px 0 10px 10px;
+                box-sizing: border-box;
+            }
+            .th:first-of-type{
+                flex: 3;
+            }
+        }
+        .tbody{
+            height: 100%;
+            color: white;
+            overflow: hidden;
+            .nomusic{
+                height: 100%;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .tr{
+                display: flex;
+                .td{
+                    flex: 1;
+                    padding: 10px 0 10px 10px;
+                    box-sizing: border-box;
+                    p{
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
+                    .author,.album{
+                        width: 120px;
+                        font-size: 14px;
+                    }
+                    .name{
+                        width: 300px;
+                        font-size: 14px;
+                    }
+                }
+                .td:first-of-type{
+                    display: flex;
+                    flex: 3;
+                    align-items: center;
+                    p{
+                        margin-left: 10px;
+                    }
+                    span{
+                        cursor: pointer;
+                    }
+                    .icon-xihuan{
+                        color: brown;
+                    }
+                }
+                .td:nth-of-type(2){
+                    .el-icon-video-play{
+                        cursor: pointer;
+                    }
+                }
+            }
+            .tr:hover{
+                background: rgba(0,0,0,0.3);
+            }
+        }
+    }
+}

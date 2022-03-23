@@ -1,0 +1,336 @@
+.musicinfo {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-sizing: border-box;
+  color: white;
+  padding: 70px 0 140px 0;
+  .backimg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    filter: blur(20px);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: darken;
+    box-sizing: border-box;
+  }
+  .info_top {
+    height: 70px;
+    margin-top: -70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    .left {
+      font-size: 30px;
+      cursor: pointer;
+    }
+    .left:hover {
+      color: lawngreen !important;
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      span {
+        padding-left: 10px;
+        cursor: pointer;
+      }
+      span:hover {
+        color: lawngreen;
+      }
+    }
+  }
+  .info_center {
+    height: 100%;
+    display: flex;
+    .music_photo {
+      flex: 1;
+      img {
+        width: 400px;
+        display: block;
+        margin: 50px 0 0 100px;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+    }
+    .music_text {
+      flex: 1;
+      height: 100%;
+      box-sizing: border-box;
+      padding-top: 100px;
+      &_top {
+        margin-top: -100px;
+        .music_title {
+          height: 40px;
+          text-align: center;
+          font-size: 20px;
+        }
+        .music_author,
+        .music_album {
+          text-align: center;
+          color: gray;
+          font-size: 14px;
+          line-height: 25px;
+        }
+      }
+
+      &_center {
+        margin-top: 50px;
+        height: 80%;
+        position: relative;
+        .noText {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          color: white;
+        }
+        .music_texts {
+          height: 100%;
+          overflow: hidden;
+          .swiper-slide {
+            p {
+              text-align: center;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              overflow: hidden;
+              color: white;
+            }
+            .krc_text_line {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              span {
+                width: max-content;
+                flex-shrink: 0;
+                white-space: pre;
+              }
+              .color,
+              .no_color {
+                // display: block;
+                position: relative;
+                overflow: hidden;
+              }
+              .color::before {
+                position: absolute;
+                left: 0;
+                top: 0;
+                color: lightgreen;
+                // display: block;
+                width: var(--fontColor);
+                /*如果想变色一半文字，就设置50%*/
+                content: attr(data-content);
+                /* 伪元素的动态获取内容 */
+                overflow: hidden;
+              }
+              .no_color::before {
+                position: absolute;
+                left: 0;
+                top: 0;
+                color: lightgreen;
+                display: block;
+                width: 100%;
+                /*如果想变色一半文字，就设置50%*/
+                content: attr(data-content);
+                /* 伪元素的动态获取内容 */
+                overflow: hidden;
+              }
+            }
+          }
+
+          .swiper-slide-active {
+            p {
+              font-size: 20px;
+              color: lightgreen;
+              // white-space: nowrap;
+            }
+          }
+        }
+        #krc_text {
+          .swiper-slide-active {
+            p {
+              font-size: 18px;
+              color: white;
+              // white-space: nowrap;
+            }
+          }
+        }
+      }
+    }
+  }
+  .pinpu {
+    width: 90%;
+    margin: auto;
+    height: 70px;
+  }
+  .info_bottom {
+    height: 70px;
+    box-sizing: border-box;
+    padding-top: 3px;
+    .tpbar {
+      width: 100%;
+      height: 3px;
+      margin-top: -3px;
+      cursor: pointer;
+      background: gray;
+      .pre {
+        height: 100%;
+        background: green;
+      }
+    }
+    .body {
+      display: flex;
+      height: 100%;
+      padding: 0 20px;
+      box-sizing: border-box;
+      .left,
+      .right {
+        flex: 1;
+      }
+      .center {
+        flex: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .play_sort {
+          width: 20px;
+          .loop {
+            color: white;
+            cursor: pointer;
+            outline: none;
+            font-size: 20px;
+          }
+          .loop:hover {
+            color: chartreuse;
+          }
+        }
+        .play {
+          color: white;
+          font-weight: 500;
+          font-size: 50px;
+          cursor: pointer;
+        }
+        .play:hover {
+          color: chartreuse;
+        }
+        .up,
+        .next {
+          font-size: 30px;
+          font-weight: 600;
+          color: white;
+          cursor: pointer;
+          margin: 0 10px;
+        }
+        .up:hover,
+        .next:hover {
+          color: chartreuse;
+        }
+        .vol {
+          .volume {
+            outline: none;
+            cursor: pointer;
+          }
+          .volume:hover {
+            color: chartreuse;
+          }
+        }
+      }
+      .left {
+        display: flex;
+        align-items: center;
+        .time {
+          font-size: 12px;
+          margin-left: 10px;
+        }
+        span {
+          margin-right: 10px;
+          font-size: 20px;
+          cursor: pointer;
+        }
+        .like {
+          color: red;
+        }
+        .nolike_wrap {
+          position: relative;
+          .label {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            font-size: 12px;
+            transform: scale(0.8);
+          }
+        }
+        .say_wrap{
+          position: relative;
+          .label {
+            width: 25px;
+            position: absolute;
+            top: -4px;
+            right: -10px;
+            font-size: 12px;
+            transform: scale(0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .label:hover{
+            color: white;
+          }
+        }
+        span:hover {
+          color: chartreuse;
+        }
+        span:first-of-type:hover {
+          color: red;
+        }
+      }
+      .right {
+        display: flex;
+        align-items: center;
+        span {
+          margin-right: 10px;
+          cursor: pointer;
+        }
+        .soundoff {
+          color: gray;
+          font-size: 10px;
+          border: 1px solid gray;
+          border-radius: 5px;
+          padding: 2px 5px;
+        }
+        .soundoff:hover {
+          border-color: chartreuse;
+          color: chartreuse;
+        }
+        .soundon {
+          font-size: 10px;
+          border: 1px solid chartreuse;
+          border-radius: 5px;
+          padding: 2px 5px;
+          color: chartreuse;
+        }
+        .desk_text_off {
+          color: red;
+        }
+        .desk_text_on {
+          color: chartreuse;
+        }
+        .desk_text_off:hover {
+          color: chartreuse;
+        }
+      }
+    }
+  }
+}

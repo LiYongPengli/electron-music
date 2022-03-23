@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        background: url(/public/imgs/back1.jpg) no-repeat;
+        background-size: 100% 100%;
+        padding-top: 1px;
+        box-sizing: border-box;
+    }
+
+    .wrap {
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 10%;
+    }
+
+    .wrap .title {
+        margin: 50px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wrap .title img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .wrap .title .title_text {
+        font-size: 30px;
+        color: white;
+        margin-left: 20px;
+    }
+
+    .wrap .center {
+        width: 500px;
+        margin: auto;
+        padding: 10px;
+        box-sizing: border-box;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 5px;
+    }
+
+    .wrap .center .center_title {
+        color: white;
+        padding: 10px 0;
+    }
+
+    .wrap .center .register_body .item {
+        display: flex;
+        padding: 5px 10px;
+        margin: 20px 0;
+    }
+
+    .wrap .center .register_body .item span {
+        display: block;
+        width: 100px;
+        text-align: right;
+        color: white;
+    }
+
+    .wrap .center .register_body .item input {
+        flex: 1;
+        padding: 5px 10px;
+        margin-left: 10px;
+        background: none;
+        border: 1px solid lightgray;
+        color: white;
+        border-radius: 2px;
+        outline: none;
+    }
+
+    .wrap .center .register_body .item input::placeholder {
+        color: white;
+    }
+
+    .wrap .center .register_bottom {
+        padding: 50px 0;
+        text-align: center;
+    }
+
+    .wrap .center .register_bottom button {
+        width: 200px;
+        height: 30px;
+        padding: 5px 10px;
+        background: #2daebf;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        color: white;
+        outline: none;
+    }
+
+    .wrap .center .register_bottom button:hover {
+        background: green;
+    }
+</style>
+
+<body>
+    <div class="wrap">
+        <div class="title">
+            <img src="/public/imgs/icon.png" alt="">
+            <p class="title_text">lyps动感app</p>
+        </div>
+        <div class="center">
+            <p class="center_title">用户注册</p>
+            <div class="register_body">
+                <div class="item">
+                    <span>用户名:</span>
+                    <input id="username" type="text" placeholder="请输入用户名">
+                </div>
+                <div class="item">
+                    <span>密码:</span>
+                    <input id="password" type="password" placeholder="请输入密码">
+                </div>
+            </div>
+            <div class="register_bottom">
+                <button onclick="toRegister()">注册</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let username = document.getElementById('username');
+    let password = document.getElementById('password');
+    function toRegister() {
+        if (!username.value) {
+            alert('请输入用户名');
+            return;
+        }
+        if (!password.value) {
+            alert('请输入密码');
+            return;
+        }
+        register_requist();
+    }
+
+    function register_requist() {
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', '/api/register');
+        xhr.setRequestHeader('x-csrf-token',getCookie("csrfToken"));
+        xhr.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
+        xhr.send(JSON.stringify({
+            username: username.value,
+            password: password.value
+        }));
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4)
+                if (xhr.status == 200)
+                    alert('注册成功，请到客户端登录');
+        }
+    }
+
+
+    function getCookie(name) {
+        let reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        let arr;
+        if (arr = document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+
+    }
+</script>
+
+</html>

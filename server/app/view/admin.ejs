@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动感音乐app管理端</title>
+    <link rel="stylesheet" href="/public/css/admin.css">
+</head>
+
+<body>
+    <div></div>
+    <span>lrc:</span>
+    <input name="lrc" type="file" />
+    <span>krc:</span>
+    <input name="krc" type="file" />
+    <span>music:</span>
+    <input name="music" type="file" />
+    <div>
+        <button onclick="request()">提交</button>
+    </div>
+</body>
+<script>
+    let music = document.getElementsByName('music')[0]
+    let krc = document.getElementsByName('krc')[0]
+    let lrc = document.getElementsByName('lrc')[0]
+    function request() {
+        let xhr = new XMLHttpRequest();
+        let form = new FormData();
+        if (music.files[0]) form.append('music', music.files[0])
+        if (krc.files[0]) form.append('krc', krc.files[0])
+        if (lrc.files[0]) form.append('lrc', lrc.files[0])
+        xhr.open('post', '/upmusic');
+        // xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+        xhr.send(form);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
+                    console.log(this.response);
+                }
+            }
+        }
+    }
+</script>
+
+</html>

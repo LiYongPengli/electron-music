@@ -1,0 +1,5 @@
+html,body{height: 100%;}
+body{
+    background: url(/public/imgs/adminback.jpg) no-repeat;
+    background-size: 100% 100%;
+}
